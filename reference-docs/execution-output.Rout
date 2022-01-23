@@ -1,7 +1,5 @@
-    dplyr   stringr     rjson lubridate     tidyr  jsonlite     RCurl    RMySQL 
-     TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE 
-    readr 
-     TRUE 
+    dplyr   stringr     rjson lubridate     tidyr  jsonlite     RCurl    RMySQL     readr 
+     TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE 
 [1] 1
 [1] 2
 [1] 3
@@ -10,8 +8,4 @@
 [1] 6
 [1] 7
 [1] TRUE
-<<<<<<< HEAD
-<MySQLResult:10,0,2>
-=======
-<MySQLResult:16713472,0,2>
->>>>>>> 995bf8c0b5606bb095e00c65933c2628dc2f6553
+<MySQLResult:-31086157,1,2>

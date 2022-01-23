@@ -3,10 +3,10 @@
 ####################################################################
 
 ### create sink connections to capture errors in log files
-sink_message <- file("~/open-weather-map/execution-message.Rout", open = "wt")
+sink_message <- file("~/open-weather-map/reference-docs/execution-message.Rout", open = "wt")
 sink(sink_message, type = "message", append = FALSE)
 
-sink_output <- file("~/open-weather-map/execution-output.Rout", open = "wt")
+sink_output <- file("~/open-weather-map/reference-docs/execution-output.Rout", open = "wt")
 sink(sink_output, type = "output", append = FALSE)
 
 ### specify working directory
@@ -76,7 +76,7 @@ rm(install_packages)
 base_url <- 'https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=latitude&lon=longitude&dt=datetime&appid=apikey&units=imperial'
 
 ### city lookup
-city_lookup <- read.csv(file = '~/open-weather-map/city-lookup.csv', header = TRUE, stringsAsFactors = FALSE)
+city_lookup <- read.csv(file = '~/open-weather-map/data/city-lookup.csv', header = TRUE, stringsAsFactors = FALSE)
 colnames(city_lookup)[1] <- 'city'
 colnames(city_lookup)[2] <- 'latitude'
 colnames(city_lookup)[3] <- 'longitude'
@@ -157,10 +157,10 @@ dbWriteTable(conn = database_connection,
              row.names = FALSE)
 
 ### remove duplicates
-dbSendQuery(conn = database_connection, read_file(file = 'remove-duplicates.sql'))
+dbSendQuery(conn = database_connection, read_file(file = paste(wd,'/queries/remove-duplicates.sql', sep = '')))
 
 ### confirm runtime
-write.table(x = Sys.time(), file = 'runtime.txt')
+write.table(x = Sys.time(), file = paste(wd,'/reference-docs/runtime.txt',sep=''))
 
 ### close sink connection (message)
 sink(type = "message")
